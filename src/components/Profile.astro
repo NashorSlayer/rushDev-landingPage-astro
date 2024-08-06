@@ -1,0 +1,90 @@
+---
+const teamMembers = [
+  {
+    name: "Arif Bordones 🥵",
+    description: "Soy Arif, de Ovalle",
+    linkedin: "https://www.linkedin.com/in/arif-bordones-sierra/",
+    github: "https://github.com/NashorSlayer",
+  },
+  {
+    name: "Benjamin Ardiles 🟡⚫",
+    description: "Soy Benja, Millonario",
+    linkedin: "https://www.linkedin.com/in/benjamin-ardiles-jofre-311aa729b/",
+    github: "https://github.com/benjardiles",
+  },
+  {
+    name: "Inti Cerda",
+    description: "Soy Inti",
+    linkedin: "https://www.linkedin.com/in/inti-amaru-cerda-ramirez-704321321/",
+    github: "https://github.com/IntiCerda/IntiCerda",
+  },
+  {
+    name: "Bastián Egaña",
+    description: "Soy Basti",
+    linkedin:
+      "https://www.linkedin.com/in/basti%C3%A1n-ega%C3%B1a-trujillo-4081a7237/",
+    github: "https://github.com/ElVaquita",
+  },
+];
+---
+
+<section class="team">
+  {
+    teamMembers.map((member) => (
+      <div class="team-member">
+        <h3>{member.name}</h3>
+        <p>{member.description}</p>
+        <div class="social-links">
+          <a href={member.linkedin} target="_blank" aria-label="LinkedIn">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1200px-LinkedIn_icon.svg.png"
+              alt="LinkedIn"
+            />
+          </a>
+          {member.github && (
+            <a href={member.github} target="_blank" aria-label="GitHub">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png"
+                alt="GitHub"
+              />
+            </a>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .team {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+  .team-member {
+    border: 2px solid #00adb5;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .social-links {
+    margin-top: 10px;
+  }
+  .social-links a {
+    margin: 0 5px;
+    color: #0073b1;
+    text-decoration: none;
+  }
+  .social-links img {
+    width: 24px;
+    height: 24px;
+  }
+  @media (max-width: 768px) {
+    .team {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

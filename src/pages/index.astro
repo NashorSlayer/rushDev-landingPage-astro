@@ -1,105 +1,89 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Profile from "../components/Profile.astro";
+import Carousel from "../components/Carousel.astro";
+import Services from "../components/Services.astro";
 ---
 
 <Layout title="RushDev">
-	<main>
-		<section class="hero">
-			<img src="/images/logo.png" alt="RushDev Logo" class="logo" />
-		</section>
-		
-		<section class="about-us">
-			<h2>QUIENES SOMOS...</h2>
-			<p>Somos un equipo de cuatro amigos apasionados por la tecnología y el desarrollo de software, dedicados a ayudar a empresas y PYMEs a mejorar sus operaciones mediante soluciones tecnológicas innovadoras. En nuestro emprendimiento, combinamos nuestras habilidades y experiencia para crear software personalizado que optimiza procesos, aumenta la eficiencia y facilita la gestión empresarial. Nuestra misión es entender las necesidades específicas de cada cliente y ofrecer herramientas digitales que impulsen su crecimiento y éxito. Trabajamos con compromiso y creatividad para garantizar que cada proyecto se convierta en una historia de éxito compartido.</p>
-			<a href="/contacto" class="contact-button">Contacto</a>
-		</section>
+  <main>
+    <section class="hero">
+      <img src="/images/logo.png" alt="RushDev Logo" class="logo" />
+    </section>
 
-		<section class="team">
-			<div class="team-member">
-				<h3>Arif Bordones 🥵</h3>
-				<p>Soy Arif, de Ovalle</p>
-				<div class="social-links">
-					<a href="https://linkedin.com/in/arif" target="_blank">LinkedIn</a>
-				</div>
-			</div>
-			<div class="team-member">
-				<h3>Benjamin Ardiles 🟡⚫</h3>
-				<p>Soy Benja, Millonario</p>
-				<div class="social-links">
-					<a href="https://linkedin.com/in/benja" target="_blank">LinkedIn</a>
-				</div>
-			</div>
-			<div class="team-member">
-				<h3>Inti Cerda</h3>
-				<p>Soy Inti</p>
-				<div class="social-links">
-					<a href="https://linkedin.com/in/inti" target="_blank">LinkedIn</a>
-				</div>
-			</div>
-			<div class="team-member">
-				<h3>Bastián Egaña</h3>
-				<p>Soy Basti</p>
-				<div class="social-links">
-					<a href="https://linkedin.com/in/bastian" target="_blank">LinkedIn</a>
-				</div>
-			</div>
-		</section>
+    <section class="about-us">
+      <h2 class="neon">QUIENES SOMOS...</h2>
+      <p>
+        Somos un equipo de cuatro amigos apasionados por la tecnología y el
+        desarrollo de software, dedicados a ayudar a empresas y PYMEs a mejorar
+        sus operaciones mediante soluciones tecnológicas innovadoras. En nuestro
+        emprendimiento, combinamos nuestras habilidades y experiencia para crear
+        software personalizado que optimiza procesos, aumenta la eficiencia y
+        facilita la gestión empresarial.
+      </p>
+    </section>
 
-		
-		</section>
+    <Carousel />
 
-		
-	</main>
+    <section class="button">
+      <a href="/contacto" class="contact-button">Contacto</a>
+    </section>
+
+    <h2 class="team neon">NUESTRO EQUIPO</h2>
+
+    <Profile />
+    <Services />
+  </main>
 </Layout>
 
 <style>
-	.hero {
-		text-align: center;
-		padding: 2rem 1rem;
-		background: #13151a;
-		color: white;
-	}
-	.hero .logo {
-		max-width: 500px; /* Aumenta el tamaño del logo */
-	}
-	.hero-title {
-		font-size: 3rem;
-		margin: 1rem 0;
-	}
-	.hero-subtitle {
-		font-size: 1.5rem;
-		color: #aaa;
-	}
-	.about-us, .team, .partners {
-		padding: 2rem 1rem;
-		color: white;
-		text-align: center;
-	}
-	.contact-button {
-		display: inline-block;
-		padding: 0.5rem 1rem;
-		background: var(--accent-gradient);
-		colorrgb(255, 255, 255)te;
-		text-decoration: none;
-		border-radius: 0.5rem;
-		margin-top: 1rem;
-	}
-	.team-member {
-		margin: 1rem 0;
-	}
-	.social-links a {
-		color: var(--accent-light);
-		text-decoration: none;
-		margin: 0 0.5rem;
-	}
-	.partners-logos {
-		display: flex;
-		justify-content: center;
-		gap: 1rem;
-	}
-	.background-section {
-		background-size: cover;
-		background-position: center;
-		height: 100vh; /* O ajusta según tus necesidades */
-	}
+  .hero {
+    text-align: center;
+  }
+  .hero .logo {
+    max-width: 500px;
+  }
+  .about-us,
+  .team {
+    padding: 2rem 1rem;
+    color: white;
+    text-align: center;
+    width: 70%;
+    margin: 20px auto;
+  }
+  .contact-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #00adb5;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    width: 100px;
+  }
+  .contact-button:hover {
+    background: #393e46;
+  }
+  .team {
+    margin-top: 20px;
+  }
+
+  .button {
+    text-align: center;
+    margin-top: 20px;
+    width: 93%;
+    margin: 20px auto;
+  }
+  .neon {
+    color: #00adb5;
+    /* text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #00adb5,
+      0 0 30px #00adb5,
+      0 0 40px #00adb5,
+      0 0 50px #00adb5,
+      0 0 60px #00adb5,
+      0 0 70px #00adb5; */
+  }
 </style>

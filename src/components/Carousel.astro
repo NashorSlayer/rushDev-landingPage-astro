@@ -1,0 +1,228 @@
+---
+const items = [
+  {
+    title: "MISION",
+    text: "En RushDev, nuestra misión es ayudar a empresas y PYMEs a mejorar sus operaciones mediante soluciones tecnológicas innovadoras. Nos esforzamos por crear software personalizado que optimiza procesos, aumenta la eficiencia y facilita la gestión empresarial, contribuyendo al crecimiento y éxito de nuestros clientes.",
+  },
+  {
+    title: "VISION",
+    text: "Nuestra visión es ser un referente en el desarrollo de software personalizado para empresas y PYMEs, reconocidos por nuestra calidad, innovación y compromiso con el éxito de nuestros clientes. Buscamos ser un socio estratégico para las empresas, brindando soluciones tecnológicas que les permitan crecer y prosperar en un mundo digital.",
+  },
+  {
+    title: "VALORES",
+    values: [
+      {
+        subtitle: "Calidad",
+        description:
+          "Nos esforzamos por ofrecer soluciones de software de alta calidad que cumplan con las expectativas de nuestros clientes.",
+      },
+      {
+        subtitle: "Innovación",
+        description:
+          "Buscamos constantemente nuevas formas de mejorar y optimizar nuestros procesos y soluciones tecnológicas.",
+      },
+      {
+        subtitle: "Compromiso",
+        description:
+          "Estamos comprometidos con el éxito de nuestros clientes y trabajamos en estrecha colaboración con ellos para lograr sus objetivos.",
+      },
+      {
+        subtitle: "Integridad",
+        description:
+          "Actuamos con honestidad, transparencia y ética en todas nuestras interacciones y relaciones comerciales.",
+      },
+    ],
+  },
+];
+---
+
+<div class="carousel">
+  <div class="carousel-inner">
+    {
+      items.map((item) => (
+        <div class="carousel-item">
+          <h2 class="neon">{item.title}</h2>
+          {item.text ? (
+            <p>{item.text}</p>
+          ) : (
+            item.values &&
+            item.values.map((value) => (
+              <div>
+                <h3>{value.subtitle}</h3>
+                <p>{value.description}</p>
+              </div>
+            ))
+          )}
+        </div>
+      ))
+    }
+  </div>
+  <button class="carousel-button prev">&#10094;</button>
+  <button class="carousel-button next">&#10095;</button>
+  <div class="carousel-indicators">
+    {
+      items.map((_, index) => (
+        <div class="carousel-indicator" data-index={index} />
+      ))
+    }
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", () => {
+    let index = 0;
+    const items = document.querySelectorAll(".carousel-item");
+    const totalSlides = items.length;
+    const inner = document.querySelector(".carousel-inner");
+    const indicators = document.querySelectorAll(".carousel-indicator");
+
+    function showSlide(i) {
+      index = (i + totalSlides) % totalSlides;
+      const offset = -index * 100;
+      inner.style.transform = `translateX(${offset}%)`;
+      updateIndicators();
+    }
+
+    function nextSlide() {
+      showSlide(index + 1);
+    }
+
+    function prevSlide() {
+      showSlide(index - 1);
+    }
+
+    function updateIndicators() {
+      indicators.forEach((indicator, i) => {
+        indicator.classList.toggle("active", i === index);
+      });
+    }
+
+    const nextButton = document.querySelector(".carousel-button.next");
+    const prevButton = document.querySelector(".carousel-button.prev");
+
+    nextButton.addEventListener("click", () => {
+      clearInterval(autoSlideInterval);
+      nextSlide();
+      startAutoSlide();
+    });
+
+    prevButton.addEventListener("click", () => {
+      clearInterval(autoSlideInterval);
+      prevSlide();
+      startAutoSlide();
+    });
+
+    indicators.forEach((indicator) => {
+      indicator.addEventListener("click", (e) => {
+        clearInterval(autoSlideInterval);
+        showSlide(parseInt(e.target.getAttribute("data-index")));
+        startAutoSlide();
+      });
+    });
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 15000);
+    }
+
+    let autoSlideInterval = setInterval(nextSlide, 15000);
+
+    showSlide(index);
+  });
+</script>
+
+<style>
+  .carousel {
+    position: relative;
+    width: 70%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* background: rgba(18, 18, 18, 1); */
+    margin: 0 auto;
+  }
+
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    height: 500px;
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 50%;
+  }
+
+  .carousel-button.prev {
+    left: 10px;
+  }
+
+  .carousel-button.next {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .carousel-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .carousel-indicator.active {
+    opacity: 1;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  p {
+    margin-bottom: 5px;
+    color: white;
+  }
+
+  h3 {
+    margin-bottom: 5px;
+    color: white;
+  }
+  .neon {
+    color: #00adb5;
+    /* text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #00adb5,
+      0 0 30px #00adb5,
+      0 0 40px #00adb5,
+      0 0 50px #00adb5,
+      0 0 60px #00adb5,
+      0 0 70px #00adb5; */
+  }
+</style>
