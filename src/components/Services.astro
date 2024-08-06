@@ -2,22 +2,25 @@
 const services = [
     {
         name: "Desarrollo Web",
-        description:
-            "Creamos sitios web personalizados y optimizados para ofrecer la mejor experiencia a tus usuarios.",
-        // icon: "/icons/web-development.svg",
-        price: "$500 - $2000",
+        description: 
+            "Creamos sitios web creativos, personalizados, optimizados y modernos. Nuestros diseñadores web utilizan las últimas tecnologías para desarrollar tu sitio web profesional. Ofrecemos páginas web dinámicas que se actualizan en minutos, mejorando así la experiencia del usuario.",
         features: [
             "Diseño Responsivo",
             "Optimización SEO",
             "Integración de CMS",
+            "Creatividad y Personalización",
+            "Tecnologías Modernas",
+            "Actualizaciones Rápidas",
+            "Experiencia de Usuario Mejorada"
         ],
+
+
     },
     {
         name: "Desarrollo de Aplicaciones",
         description:
-            "Desarrollamos aplicaciones móviles y de escritorio con interfaces intuitivas y funcionalidades robustas.",
+            "Desarrollamos aplicaciones móviles y de escritorio con interfaces intuitivas y funcionalidades robustas. Nuestro enfoque incluye:",
         // icon: "/icons/app-development.svg",
-        price: "$1000 - $5000",
         features: [
             "Aplicaciones Nativas",
             "Desarrollo Cross-Platform",
@@ -27,9 +30,8 @@ const services = [
     {
         name: "Consultoría en UX/UI",
         description:
-            "Ofrecemos consultoría para mejorar la experiencia del usuario y el diseño de interfaces en tus proyectos.",
+            "Ofrecemos consultoría para mejorar la experiencia del usuario y el diseño de interfaces en tus proyectos. Nuestros servicios incluyen:",
         // icon: "/icons/ux-ui.svg",
-        price: "$300 - $1500",
         features: [
             "Auditoría de Usabilidad",
             "Prototipos Interactivos",
@@ -41,7 +43,6 @@ const services = [
         description:
             "Optimización para motores de búsqueda y estrategias de marketing digital para aumentar la visibilidad de tu negocio.",
         // icon: "/icons/seo-marketing.svg",
-        price: "$400 - $2000",
         features: [
             "Estrategias SEO Personalizadas",
             "Campañas PPC",
@@ -52,15 +53,14 @@ const services = [
 ---
 
 <section class="services">
-    <h2>Nuestros Servicios</h2>
+    <h1>Nuestros Servicios</h1>
     <div class="services-list">
         {
             services.map((service) => (
                 <div class="service-item">
                     {/* <img src={service.icon} alt={service.name} class="service-icon" /> */}
-                    <h3>{service.name}</h3>
+                    <h2>{service.name}</h2>
                     <p>{service.description}</p>
-                    <p class="service-price">Precio: {service.price}</p>
                     <ul class="service-features">
                         {service.features.map((feature) => (
                             <li>{feature}</li>
