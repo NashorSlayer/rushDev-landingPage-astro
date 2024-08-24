@@ -1,22 +1,135 @@
 ---
+import { teamMembers } from './Profile.astro';
 ---
-<section class="team bg-purple-800 text-white">
-    <div class="container mx-auto text-center">
-      <h2>Conoce nuestro equipo</h2>
-      <div class="grid grid-cols-4 gap-4">
-        <div class="team-member border-2 border-white p-4 rounded-lg">
-          <h3>Nombre</h3>
-          <p>Descripcion</p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1200px-LinkedIn_icon.svg.png"
-                alt="LinkedIn"
-              />
-            </a>
-            
-        
+
+<head>
+  <!-- Otros enlaces y metadatos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<section class="team bg-purple-800 text-white py-10">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-center">Conoce nuestro equipo</h2>
+    <div class="relative flex flex-col justify-center items-center space-y-8">
+      <button id="prevButton" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white text-purple-800 p-2 rounded-full shadow-lg hover:bg-gray-200 transition">
+        &#9664; 
+      </button>
+      
+      <div class="flex flex-col justify-center items-center w-full">
+        {teamMembers.map((member, index) => (
+          <div
+            class={`team-member border-2 border-white rounded-lg flex items-center h-32 w-full ${index === 0 ? 'block' : 'hidden'}`}
+            style={`background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));`}
+          >
+            <div class="photo-placeholder bg-white rounded-lg" style="height: 200px; width: 200px; margin-right: 16px;">
+              <img src={member.image} alt={member.name} class="h-full w-full object-cover rounded-lg" />
+            </div>
+            <div class="flex-1 flex flex-col justify-center text-center px-4">
+              <h3 class="text-xl font-semibold mb-2" style="margin-top: 0; margin-bottom: 25px;">{member.name}</h3>
+              <p class="mb-0 text-base">{member.description}</p>
+            </div>
+            <div class="social-links flex flex-col justify-center items-center ml-4">
+              <a href={member.linkedin} target="_blank" aria-label="LinkedIn" class="mb-5">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1200px-LinkedIn_icon.svg.png"
+                  alt="LinkedIn"
+                  class="w-10 h-10 transition-transform duration-300 ease-in-out transform hover:scale-125"
+                />
+              </a>
+              {member.github && (
+                <a href={member.github} target="_blank" aria-label="GitHub" class="mb-5">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png"
+                    alt="GitHub"
+                    class="w-10 h-10 transition-transform duration-300 ease-in-out transform hover:scale-125"
+                  />
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
+
+      <button id="nextButton" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white text-purple-800 p-2 rounded-full shadow-lg hover:bg-gray-200 transition">
+        &#9654; 
+      </button>
     </div>
-  </section>
-  
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const teamMembers = document.querySelectorAll<HTMLElement>('.team-member');
+    let currentIndex = 0;
+    const totalMembers = teamMembers.length;
+
+    function updateDisplay() {
+      teamMembers.forEach((member, index) => {
+        member.style.display = index === currentIndex ? 'flex' : 'none'; 
+      });
+    }
+
+    function showNextMember() {
+      currentIndex = (currentIndex + 1) % totalMembers;
+      updateDisplay();
+    }
+
+    function showPrevMember() {
+      currentIndex = (currentIndex - 1 + totalMembers) % totalMembers;
+      updateDisplay();
+    }
+
+    document.getElementById('nextButton')?.addEventListener('click', showNextMember);
+    document.getElementById('prevButton')?.addEventListener('click', showPrevMember);
+    
+    updateDisplay();
+  });
+</script>
+
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .team-member {
+    display: none; 
+    flex-direction: row; 
+    width: 80%; 
+    max-width: 100vw; 
+    padding: 25px; 
+    box-sizing: border-box; 
+    height: 250px; 
+  }
+
+  .photo-placeholder {
+    background-color: #ffffff;
+    height: 200px; 
+    width: 200px; 
+    margin-right: 16px; 
+  }
+
+  .team-member h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; 
+    font-size: 1.5rem; 
+    margin-top: 0; 
+    margin-bottom: 25px; 
+  }
+
+  .team-member p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem; 
+  }
+
+  .social-links {
+    margin-left: 16px; 
+  }
+
+  @media (max-width: 768px) {
+    .team-member {
+      height: auto; 
+    }
+  }
+</style>
