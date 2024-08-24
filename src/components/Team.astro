@@ -1,22 +1,71 @@
 ---
+import { teamMembers } from './Profile.astro'; // Ajusta la ruta si es necesario
 ---
-<section class="team bg-purple-800 text-white">
-    <div class="container mx-auto text-center">
-      <h2>Conoce nuestro equipo</h2>
-      <div class="grid grid-cols-4 gap-4">
-        <div class="team-member border-2 border-white p-4 rounded-lg">
-          <h3>Nombre</h3>
-          <p>Descripcion</p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
+
+<section class="team bg-purple-800 text-black py-10">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6">Conoce nuestro equipo</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {teamMembers.map((member) => (
+        <div class="team-member border-2 border-white p-4 rounded-lg flex flex-col justify-between h-full">
+          <div>
+            <h3 class="text-xl font-semibold mb-2">{member.name}</h3>
+            <p class="mb-4">{member.description}</p>
+          </div>
+          <div class="social-links mt-4 flex justify-center items-center">
+            <a href={member.linkedin} target="_blank" aria-label="LinkedIn" class="mx-3">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1200px-LinkedIn_icon.svg.png"
                 alt="LinkedIn"
+                class="w-8 h-8 transition-transform duration-300 ease-in-out transform hover:scale-125"
               />
             </a>
-            
-        
-      </div>
+            {member.github && (
+              <a href={member.github} target="_blank" aria-label="GitHub" class="mx-3">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png"
+                  alt="GitHub"
+                  class="w-8 h-8 transition-transform duration-300 ease-in-out transform hover:scale-125"
+                />
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
-  </section>
-  
+  </div>
+</section>
+
+<style>
+  .team {
+    background-color: #A02AEE; 
+    color: white; 
+  }
+  .team-member {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)); /* Degradado oscuro */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidad */
+}
+
+  .social-links {
+    margin-top: auto; 
+  }
+  .social-links img {
+    width: 32px; 
+    height: 32px; 
+    transition: transform 0.3s; 
+  }
+  .social-links img:hover {
+    transform: scale(1.25); 
+  }
+  @media (max-width: 768px) {
+    .grid-cols-4 {
+      grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas en pantallas pequeñas */
+    }
+  }
+</style>
