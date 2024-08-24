@@ -1,89 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Profile from "../components/Profile.astro";
-import Carousel from "../components/Carousel.astro";
-import Services from "../components/Services.astro";
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Team from '../components/Team.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="RushDev">
-  <main>
-    <section class="hero">
-      <img src="/images/logo.png" alt="RushDev Logo" class="logo" />
-    </section>
-
-    <section class="about-us">
-      <h2 class="neon">QUIENES SOMOS...</h2>
-      <p>
-        Somos un equipo de cuatro amigos apasionados por la tecnología y el
-        desarrollo de software, dedicados a ayudar a empresas y PYMEs a mejorar
-        sus operaciones mediante soluciones tecnológicas innovadoras. En nuestro
-        emprendimiento, combinamos nuestras habilidades y experiencia para crear
-        software personalizado que optimiza procesos, aumenta la eficiencia y
-        facilita la gestión empresarial.
-      </p>
-    </section>
-
-    <Carousel />
-
-    <section class="button">
-      <a href="/contacto" class="contact-button">Contacto</a>
-    </section>
-
-    <h2 class="team neon">NUESTRO EQUIPO</h2>
-
-    <Profile />
-    <Services />
-  </main>
+<Layout>
+  <Hero />
+  <Services />
+  <Team />
+  <CTA />
+  <Footer />
 </Layout>
-
-<style>
-  .hero {
-    text-align: center;
-  }
-  .hero .logo {
-    max-width: 500px;
-  }
-  .about-us,
-  .team {
-    padding: 2rem 1rem;
-    color: white;
-    text-align: center;
-    width: 70%;
-    margin: 20px auto;
-  }
-  .contact-button {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: #00adb5;
-    color: white;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-    width: 100px;
-  }
-  .contact-button:hover {
-    background: #393e46;
-  }
-  .team {
-    margin-top: 20px;
-  }
-
-  .button {
-    text-align: center;
-    margin-top: 20px;
-    width: 93%;
-    margin: 20px auto;
-  }
-  .neon {
-    color: #00adb5;
-    /* text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #00adb5,
-      0 0 30px #00adb5,
-      0 0 40px #00adb5,
-      0 0 50px #00adb5,
-      0 0 60px #00adb5,
-      0 0 70px #00adb5; */
-  }
-</style>

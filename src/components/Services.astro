@@ -1,120 +1,26 @@
 ---
-const services = [
-    {
-        name: "Desarrollo Web",
-        description:
-            "Creamos sitios web personalizados y optimizados para ofrecer la mejor experiencia a tus usuarios.",
-        // icon: "/icons/web-development.svg",
-        price: "$500 - $2000",
-        features: [
-            "Diseño Responsivo",
-            "Optimización SEO",
-            "Integración de CMS",
-        ],
-    },
-    {
-        name: "Desarrollo de Aplicaciones",
-        description:
-            "Desarrollamos aplicaciones móviles y de escritorio con interfaces intuitivas y funcionalidades robustas.",
-        // icon: "/icons/app-development.svg",
-        price: "$1000 - $5000",
-        features: [
-            "Aplicaciones Nativas",
-            "Desarrollo Cross-Platform",
-            "Soporte y Mantenimiento",
-        ],
-    },
-    {
-        name: "Consultoría en UX/UI",
-        description:
-            "Ofrecemos consultoría para mejorar la experiencia del usuario y el diseño de interfaces en tus proyectos.",
-        // icon: "/icons/ux-ui.svg",
-        price: "$300 - $1500",
-        features: [
-            "Auditoría de Usabilidad",
-            "Prototipos Interactivos",
-            "Diseño de Interfaces",
-        ],
-    },
-    {
-        name: "SEO y Marketing Digital",
-        description:
-            "Optimización para motores de búsqueda y estrategias de marketing digital para aumentar la visibilidad de tu negocio.",
-        // icon: "/icons/seo-marketing.svg",
-        price: "$400 - $2000",
-        features: [
-            "Estrategias SEO Personalizadas",
-            "Campañas PPC",
-            "Análisis de Competencia",
-        ],
-    },
-];
 ---
+<section class="services bg-white text-center" id="services">
+    <div class="container mx-auto">
+      <h2 class="text-4xl mt-12">Servicios</h2>
+      <a>Cada servicio incluye como primer hito la entrega del diseño en Figma con su respectivo presupuesto e información relevante</a>
+      <div class="grid grid-cols-3 gap-4 mt-12">
 
-<section class="services">
-    <h2>Nuestros Servicios</h2>
-    <div class="services-list">
-        {
-            services.map((service) => (
-                <div class="service-item">
-                    {/* <img src={service.icon} alt={service.name} class="service-icon" /> */}
-                    <h3>{service.name}</h3>
-                    <p>{service.description}</p>
-                    <p class="service-price">Precio: {service.price}</p>
-                    <ul class="service-features">
-                        {service.features.map((feature) => (
-                            <li>{feature}</li>
-                        ))}
-                    </ul>
-                </div>
-            ))
-        }
+
+
+        
+        <div class="service border-[#F1E7DC] border-2 p-8 rounded-lg">
+          <h3 class="text-[#270D35] font-bold text-xl mt-4">Ecommerce (Proximamente)</h3>
+          <p class="text-[#270D35] mt-4">Aqui ira la informacion de Ecommerce</p>
+        </div>
+        <div class="service bg-[#270D35] p-8 rounded-lg">
+          <h3 class="text-[#F1E7DC] font-bold text-xl mt-4">Landing Page</h3>
+          <p class="text-[#F1E7DC] mt-4">Aqui ira la informacion de Landing Page</p>
+        </div>
+        <div class="service border-[#F1E7DC] border-2 p-8 rounded-lg">
+          <h3 class="text-[#270D35] font-bold text-xl mt-4">Aplicaciones Web (Proximamente)</h3>
+          <p class="text-[#270D35] mt-4">Aqui ira la información de Aplciaciones Web</p>
+      </div>
     </div>
-</section>
+  </section>
 
-<style>
-    .services {
-        padding: 2rem;
-    }
-
-    .services-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .service-item {
-        flex: 1 1 calc(50% - 1rem);
-
-        border-radius: 8px;
-        padding: 1rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .service-item h3 {
-        margin-top: 0.5rem;
-    }
-
-    .service-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 1rem;
-    }
-
-    .service-price {
-        font-weight: bold;
-        margin-top: 0.5rem;
-    }
-
-    .service-features {
-        list-style-type: disc;
-        margin: 0.5rem 0;
-        padding-left: 1rem;
-    }
-
-    @media (max-width: 600px) {
-        .service-item {
-            flex: 1 1 100%;
-        }
-    }
-</style>
