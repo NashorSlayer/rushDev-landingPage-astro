@@ -94,59 +94,59 @@ import { teamMembers } from './Profile.astro';
     width: 80%; 
     max-width: 100vw; 
     padding: 25px; 
-    box-sizing: border-box; /* Incluir padding en el ancho total */
-    height: auto; /* Altura ajustable para el contenido */
-    align-items: center; /* Centrar verticalmente los elementos */
+    box-sizing: border-box; 
+    height: auto; 
+    align-items: center; 
   }
 
   .photo-placeholder {
     background-color: #ffffff;
-    flex-shrink: 0; /* Evitar que la imagen se reduzca demasiado */
-    height: 150px; /* Reducir la altura para dispositivos móviles */
+    flex-shrink: 0; 
+    height: 150px; 
     width: 150px; 
     margin-right: 16px; 
   }
 
   .team-member h3 {
-    font-size: 1.25rem; /* Ajustar tamaño de texto del nombre */
-    margin: 0 0 15px 0; /* Reducir márgenes para dispositivos móviles */
+    font-size: 1.25rem; 
+    margin: 0 0 15px 0; 
   }
 
   .team-member p {
-    font-size: 0.9rem; /* Ajustar tamaño de texto para la descripción */
+    font-size: 0.9rem; 
   }
 
   .social-links {
-    margin-left: 16px; /* Espaciado entre el texto y los íconos */
+    margin-left: 16px; 
   }
 
   @media (max-width: 768px) {
     .team-member {
-      flex-direction: column; /* Colocar elementos en columna para pantallas pequeñas */
-      text-align: center; /* Centrar texto en dispositivos móviles */
-      padding: 15px; /* Reducir padding para dispositivos móviles */
-      height: auto; /* Altura automática en pantallas pequeñas */
+      flex-direction: column; 
+      text-align: center; 
+      padding: 15px; 
+      height: auto;
     }
 
     .photo-placeholder {
-      margin-right: 0; /* Eliminar margen derecho cuando los elementos están en columna */
-      margin-bottom: 10px; /* Añadir margen inferior para separar la imagen del texto */
-      height: 120px; /* Reducir altura de la imagen para pantallas pequeñas */
-      width: 120px; /* Reducir ancho de la imagen para pantallas pequeñas */
+      margin-right: 0; 
+      margin-bottom: 10px; 
+      height: 120px; 
+      width: 120px; 
     }
 
     .social-links {
-      margin-left: 0; /* Eliminar margen izquierdo en dispositivos móviles */
-      margin-top: 10px; /* Añadir margen superior para separar los iconos del texto */
+      margin-left: 0; 
+      margin-top: 10px; 
     }
 
     .team-member h3 {
-      font-size: 1.1rem; /* Reducir aún más el tamaño del texto del nombre */
-      margin-bottom: 10px; /* Reducir margen inferior para dispositivos móviles */
+      font-size: 1.1rem; 
+      margin-bottom: 10px; 
     }
 
     .team-member p {
-      font-size: 0.85rem; /* Reducir tamaño de texto para la descripción */
+      font-size: 0.85rem; 
     }
   }
 </style>
